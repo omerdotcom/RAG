@@ -12,7 +12,7 @@ from langchain_core.output_parsers import StrOutputParser
 DATA_DIR = "data"                    # put your PDFs, .txt, .md here
 CHROMA_PATH = "./chroma_db"
 EMBEDDING_MODEL = "nomic-embed-text"
-LLM_MODEL = "llama3.1:8b"            # change to your preferred model
+LLM_MODEL = "q0.6"            # change to your preferred model
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 200
 TOP_K = 6
@@ -51,16 +51,14 @@ def create_vectorstore(chunks):
     embeddings = OllamaEmbeddings(model=EMBEDDING_MODEL)
     
     # Create or load existing DB
-    if os.path.exists(CHROMA_PATH):
-        vectorstore = Chroma(persist_directory=CHROMA_PATH, embedding_function=embeddings)
-        print(f"Loaded existing vectorstore with {vectorstore._collection.count()} chunks")
-    else:
-        vectorstore = Chroma.from_documents(
-            documents=chunks,
-            embedding=embeddings,
-            persist_directory=CHROMA_PATH
-        )
-        print(f"Created new vectorstore with {len(chunks)} chunks")
+    vectorstore = Chroma.from_documents(
+        documents=chunks,
+        embedding=embeddings,
+        persist_directory=CHROMA_PATH,
+        # Optional but recommended for consistency:
+        collection_name="local_rag_collection"   # give it a fixed name
+    )
+    print(f"Created new vectorstore with {len(chunks)} chunks")
     
     return vectorstore
 
