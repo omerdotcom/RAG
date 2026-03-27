@@ -29,3 +29,10 @@
 - Fast retrieval on consumer hardware (RTX 4060 / M2 / M3)
 - Good accuracy on technical PDFs, research papers, and personal notes
 - Built with best practices from 2026 local RAG systems
+
+## 🚀 Streamlit Web Demo
+
+Run the beautiful web interface:
+
+```bash
+streamlit run app.py
