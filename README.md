@@ -14,7 +14,7 @@
 
 <br>
 
-![Screenshot](./images/screenshot.png)
+![Screenshot](./img/screenshot.png)
 
 ## ✨ Features
 
