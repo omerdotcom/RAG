@@ -14,6 +14,8 @@
 
 <br>
 
+![Screenshot](./images/screenshot.png)
+
 ## ✨ Features
 
 - **100% Local & Private** — Runs entirely on your hardware using Ollama

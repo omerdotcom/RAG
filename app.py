@@ -21,7 +21,7 @@ st.set_page_config(
 DATA_DIR = "data"
 CHROMA_PATH = "./chroma_db"
 EMBEDDING_MODEL = "nomic-embed-text"
-LLM_MODEL = "q0.6"          # Change to qwen2.5:14b or your favorite
+LLM_MODEL = "q0.6"
 CHUNK_SIZE = 800
 CHUNK_OVERLAP = 200
 TOP_K = 6
@@ -53,7 +53,6 @@ def ingest_documents():
             pdf_loader = PyPDFDirectoryLoader(DATA_DIR)
             docs.extend(pdf_loader.load())
         
-        # Support for txt and md files
         for ext in ["*.txt", "*.md"]:
             for file in Path(DATA_DIR).glob(ext):
                 loader = TextLoader(str(file), encoding="utf-8")
